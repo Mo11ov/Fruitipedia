@@ -16,6 +16,6 @@ export function useLocalStorage(key, defaultValue) {
 
     return [
         value,
-        setLocalStorageValue
+        setLocalStorageValue,
     ];
 };

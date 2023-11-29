@@ -1,10 +1,12 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { UserContext } from '../contexts/UserContext';
 import { login } from '../services/authService';
 
 function LoginPage() {
     const { userLogin } = useContext(UserContext);
+    const navigate = useNavigate();
 
     function onSubmit(e) {
         e.preventDefault();
@@ -14,6 +16,10 @@ function LoginPage() {
         login(email, password)
             .then(userData => {
                 userLogin(userData);
+                navigate('/');
+            })
+            .catch(() => {
+                navigate('/login');
             });
     };
 

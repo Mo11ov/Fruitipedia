@@ -1,6 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import { UserContext } from '../contexts/UserContext';
+
 function NavBar() {
+    const { user } = useContext(UserContext);
+
     return (
         <header>
             <Link id="logo" to="/">
@@ -11,16 +16,15 @@ function NavBar() {
                     <Link to="/fruits">Fruits</Link>
                     <a href="#">Search</a>
                 </div>
-
-                <div className="user">
-                    <a href="#">Add Fruit</a>
-                    <a href="#">Logout</a>
-                </div>
-
-                <div className="guest">
-                    <Link to="/login">Login</Link>
-                    <a href="#">Register</a>
-                </div>
+                {user.accessToken
+                    ? <div className="user">
+                        <a href="#">Add Fruit</a>
+                        <Link to='/logout'>Logout</Link>
+                    </div>
+                    : <div className="guest">
+                        <Link to="/login">Login</Link>
+                        <Link to='/register'>Register</Link>
+                    </div>}
             </nav>
         </header>
     );

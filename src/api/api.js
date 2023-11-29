@@ -11,12 +11,12 @@ async function request(method, url, data) {
         options.body = JSON.stringify(data);
     }
 
-    //const user = getUserData();
+    const user = JSON.parse(localStorage.getItem('userData'));
 
-    // if (user) {
-    //     const token = user.accessToken;
-    //     options.headers['X-Authorization'] = token;
-    // }
+    if (user != null && user.accessToken != null) {
+        const token = user.accessToken;
+        options.headers['X-Authorization'] = token;
+    }
 
     try {
         const response = await fetch(host + url, options);
@@ -28,7 +28,7 @@ async function request(method, url, data) {
 
         if (response.ok === false) {
             if (response.status === 403) {
-                // deleteUserData();
+                localStorage.removeItem('userData');
             }
             const error = result;
             throw error;

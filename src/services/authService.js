@@ -14,6 +14,6 @@ export async function register(email, password) {
     return await post(endpoints.register, { email, password });
 };
 
-export function logout() {
-    get(endpoints.logout);
+export async function logout() {
+    return await get(endpoints.logout);
 };

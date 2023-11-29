@@ -8,6 +8,8 @@ import HomePage from './components/HomePage';
 import FruitsPage from './components/fruits/FruitsPage';
 import FruitDetails from './components/fruits/FruitDetails';
 import LoginPage from './components/LoginPage';
+import LogoutPage from './components/LogoutPage';
+import RegisterPage from './components/RegisterPage';
 
 
 function App() {
@@ -18,8 +20,13 @@ function App() {
         setUser(authData);
     };
 
+    const userLogout = () => {
+        setUser({});
+    };
+
+
     return (
-        <UserContext.Provider value={{ user, userLogin }}>
+        <UserContext.Provider value={{ user, userLogin, userLogout }}>
             <div >
                 <NavBar />
                 <main>
@@ -28,6 +35,8 @@ function App() {
                         <Route path='/fruits' element={<FruitsPage />} />
                         <Route path='fruits/:id' element={<FruitDetails />} />
                         <Route path='/login' element={<LoginPage />} />
+                        <Route path='/logout' element={<LogoutPage />} />
+                        <Route path='/register' element={<RegisterPage />} />
                     </Routes>
                 </main>
             </div>
