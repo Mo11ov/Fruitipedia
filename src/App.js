@@ -10,6 +10,10 @@ import FruitDetails from './components/fruits/FruitDetails';
 import LoginPage from './components/LoginPage';
 import LogoutPage from './components/LogoutPage';
 import RegisterPage from './components/RegisterPage';
+import CreatePage from './components/CreatePage';
+import Footer from './components/Footer';
+import EditPage from './components/EditPage';
+import SearchPage from './components/SearchPage';
 
 
 function App() {
@@ -34,11 +38,15 @@ function App() {
                         <Route path='/' element={<HomePage />} />
                         <Route path='/fruits' element={<FruitsPage />} />
                         <Route path='fruits/:id' element={<FruitDetails />} />
+                        <Route path='fruits/:id/edit' element={<EditPage />} />
                         <Route path='/login' element={<LoginPage />} />
                         <Route path='/logout' element={<LogoutPage />} />
                         <Route path='/register' element={<RegisterPage />} />
+                        <Route path='/create' element={<CreatePage />} />
+                        <Route path='/search' element={<SearchPage />} />
                     </Routes>
                 </main>
+                <Footer />
             </div>
         </UserContext.Provider>
     );

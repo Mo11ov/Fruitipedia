@@ -14,11 +14,11 @@ function NavBar() {
             <nav>
                 <div>
                     <Link to="/fruits">Fruits</Link>
-                    <a href="#">Search</a>
+                    <Link to='/search'>Search</Link>
                 </div>
                 {user.accessToken
                     ? <div className="user">
-                        <a href="#">Add Fruit</a>
+                        <Link to='/create'>Add Fruit</Link>
                         <Link to='/logout'>Logout</Link>
                     </div>
                     : <div className="guest">

@@ -17,15 +17,15 @@ export async function getById(postId) {
     return await get(endpoints.getById + postId);
 }
 
-export async function createPost(data) {
+export async function createFruit(data) {
     return await post(endpoints.create, data);
 }
 
-export async function updatePost(postId, data) {
+export async function updateFruit(postId, data) {
     return await put(endpoints.update + postId, data);
 }
 
-export async function deletePost(postId) {
+export async function deleteFruit(postId) {
     return del(endpoints.delete + postId);
 }
 

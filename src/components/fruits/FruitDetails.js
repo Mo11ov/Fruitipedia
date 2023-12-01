@@ -1,19 +1,28 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import { getById } from '../../services/dataService';
+import { getById, deleteFruit } from '../../services/dataService';
 
 function FruitDetails() {
 
+    const navigate = useNavigate();
     const { id } = useParams();
     const [fruit, setFruit] = useState({});
+    // u can get user from UserContext too
+    const user = JSON.parse(localStorage.getItem('userData'));
+
 
     useEffect(() => {
         getById(id)
             .then(result => {
                 setFruit(result);
             });
-    },[id]);
+    }, [id]);
+
+    async function onDeleteClick() {
+        await deleteFruit(id);
+        navigate('/fruits');
+    };
 
     return (
         <section id="details">
@@ -31,14 +40,16 @@ function FruitDetails() {
                         </p>
                     </div>
                     {/*Edit and Delete are only for creator*/}
-                    <div id="action-buttons">
-                        <a href="" id="edit-btn">
-                            Edit
-                        </a>
-                        <a href="" id="delete-btn">
-                            Delete
-                        </a>
-                    </div>
+                    {user._id === fruit._ownerId &&
+                        <div id="action-buttons">
+                            <Link to={`/fruits/${fruit._id}/edit`} id="edit-btn">
+                                Edit
+                            </Link>
+                            <Link to="#" onClick={onDeleteClick} id="delete-btn">
+                                Delete
+                            </Link>
+                        </div>
+                    }
                 </div>
             </div>
         </section>

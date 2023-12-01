@@ -21,7 +21,7 @@ function RegisterPage() {
 
         const { email, password, 're-password': rePass } = Object.fromEntries(new FormData(e.target));
 
-        if (email === '' || password == '') {
+        if (email === '' || password === '') {
             return alert('Please fill all fields!');
         }
 
