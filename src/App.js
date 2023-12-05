@@ -14,6 +14,7 @@ import CreatePage from './components/CreatePage';
 import Footer from './components/Footer';
 import EditPage from './components/EditPage';
 import SearchPage from './components/SearchPage';
+import ControlledCreatePage from './components/ControlledCreatePage';
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
                         <Route path='/login' element={<LoginPage />} />
                         <Route path='/logout' element={<LogoutPage />} />
                         <Route path='/register' element={<RegisterPage />} />
-                        <Route path='/create' element={<CreatePage />} />
+                        <Route path='/create' element={<ControlledCreatePage />} />
                         <Route path='/search' element={<SearchPage />} />
                     </Routes>
                 </main>
