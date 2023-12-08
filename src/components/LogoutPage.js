@@ -13,9 +13,12 @@ function LogoutPage() {
             .then(() => {
                 userLogout();
                 navigate('/fruits');
+            })
+            .catch(() => {
+                navigate('/fruits');
             });
     });
-    
+
     return null;
 };
 

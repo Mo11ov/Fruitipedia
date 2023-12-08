@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { UserContext } from './contexts/UserContext';
-import { useLocalStorage } from './hooks/useLocalStorage';
+import { AuthProvider } from './contexts/UserContext';
 
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
@@ -19,19 +18,8 @@ import ControlledCreatePage from './components/ControlledCreatePage';
 
 function App() {
 
-    const [user, setUser] = useLocalStorage('userData', {});
-
-    const userLogin = (authData) => {
-        setUser(authData);
-    };
-
-    const userLogout = () => {
-        setUser({});
-    };
-
-
     return (
-        <UserContext.Provider value={{ user, userLogin, userLogout }}>
+        <AuthProvider >
             <div >
                 <NavBar />
                 <main>
@@ -49,7 +37,7 @@ function App() {
                 </main>
                 <Footer />
             </div>
-        </UserContext.Provider>
+        </AuthProvider>
     );
 }
 
