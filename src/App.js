@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import EditPage from './components/EditPage';
 import SearchPage from './components/SearchPage';
 import ControlledCreatePage from './components/ControlledCreatePage';
+import PrivateRoute from './common/PrivateRoute';
 
 
 function App() {
@@ -24,14 +25,16 @@ function App() {
                 <NavBar />
                 <main>
                     <Routes>
+                        <Route element={<PrivateRoute />}>
+                            <Route path='/create' element={<ControlledCreatePage />} />
+                            <Route path='fruits/:id/edit' element={<EditPage />} />
+                        </Route>
                         <Route path='/' element={<HomePage />} />
                         <Route path='/fruits' element={<FruitsPage />} />
                         <Route path='fruits/:id' element={<FruitDetails />} />
-                        <Route path='fruits/:id/edit' element={<EditPage />} />
                         <Route path='/login' element={<LoginPage />} />
                         <Route path='/logout' element={<LogoutPage />} />
                         <Route path='/register' element={<RegisterPage />} />
-                        <Route path='/create' element={<ControlledCreatePage />} />
                         <Route path='/search' element={<SearchPage />} />
                     </Routes>
                 </main>
